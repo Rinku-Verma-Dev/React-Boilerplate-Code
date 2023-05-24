@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Counter } from "./counter";
 
 function Home() {
   const navigate = useNavigate();
@@ -12,6 +13,9 @@ function Home() {
   return (
     <>
       <div>Home</div>
+      <div>
+        <Counter />
+      </div>
       <button onClick={handleLogin}>login</button>
       <button onClick={handleAbout}>about</button>
     </>
