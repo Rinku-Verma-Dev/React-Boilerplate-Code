@@ -1,0 +1,17 @@
+.main-layout-wrapper {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+.header-wrapped {
+  display: flex;
+  box-sizing: border-box;
+  background-color: aqua;
+  align-items: center;
+  padding: 1rem;
+  justify-content: flex-end;
+}
+.layout-wrapper {
+  box-sizing: border-box;
+  width: 100%;
+}
