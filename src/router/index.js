@@ -7,6 +7,7 @@ import useAuth from "../utils/hooks";
 import RestrictedRoute from "./restrictedRoute";
 import Login from "../components/page/login";
 import PublicRoute from "./publicRoute";
+import Redux from "../components/page/redux";
 
 const Routing = () => {
   const auth = useAuth();
@@ -26,6 +27,14 @@ const Routing = () => {
         element={
           <PrivateRoute auth={auth}>
             <Profile />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/redux"
+        element={
+          <PrivateRoute auth={auth}>
+            <Redux />
           </PrivateRoute>
         }
       />

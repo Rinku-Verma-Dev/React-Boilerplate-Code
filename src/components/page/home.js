@@ -1,23 +1,11 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { Counter } from "./counter";
-
+import Helmet from "../common/helmet/Helmet";
+import useIsMobile from "../../utils/hooks/useMobile";
 function Home() {
-  const navigate = useNavigate();
-  const handleLogin = () => {
-    navigate("/login");
-  };
-  const handleAbout = () => {
-    navigate("/about");
-  };
+  console.log(useIsMobile());
   return (
     <>
-      <div>Home</div>
-      <div>
-        <Counter />
-      </div>
-      <button onClick={handleLogin}>login</button>
-      <button onClick={handleAbout}>about</button>
+      <Helmet title="Home" style={{ fontSize: "50px" }} />
     </>
   );
 }

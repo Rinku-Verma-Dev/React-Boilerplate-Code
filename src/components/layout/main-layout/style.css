@@ -3,15 +3,20 @@
   width: 100vw;
   height: 100vh;
 }
+
 .header-wrapped {
   display: flex;
   box-sizing: border-box;
-  background-color: aqua;
   align-items: center;
   padding: 1rem;
   justify-content: flex-end;
+  height: 10vh;
+  min-height: 50px;
 }
+
 .layout-wrapper {
   box-sizing: border-box;
-  width: 100%;
+  width: 75%;
+  height: 90vh;
+  overflow: auto;
 }
