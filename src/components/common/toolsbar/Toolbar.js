@@ -1,14 +1,18 @@
 import React, { useState } from "react";
-import SettingsIcon from "@mui/icons-material/Settings";
+import { useNavigate } from "react-router";
 
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import LogoutIcon from "@mui/icons-material/Logout";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 import "./style.css";
 
 function Toolbar({ data }) {
+  const navigate = useNavigate();
   const [isSpinning, setIsSpinning] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-
+  const handleLogin = () => {
+    navigate("/login");
+  };
   const handleClickOpen = () => {
     setIsSpinning("spin-open");
     setIsOpen(true);
@@ -27,19 +31,24 @@ function Toolbar({ data }) {
   return (
     <div className="toolbar-wrapper">
       <div className={`tools ${isOpen ? "open" : ""}`}>
-        <div className="close-arrow" onClick={() => handleClickClose()}>
-          <KeyboardArrowRightIcon />
-        </div>
-        {data.map((item) => {
+        {data.map((item, i) => {
           const { Icon, handleClick } = item;
           return (
-            <div className="tool" onClick={() => handleClick()}>
+            <div key={i} className="tool" onClick={() => handleClick()}>
               <Icon />
+              {window.innerWidth >= 768 ? item.name : null}
             </div>
           );
         })}
+        <div key={data.length} className="tool" onClick={() => handleLogin()}>
+          <LogoutIcon />
+          {window.innerWidth >= 768 ? "Login" : null}
+        </div>
       </div>
-      <div className="icon-wrapper" onClick={() => handleClickOpen()}>
+      <div
+        className="icon-wrapper"
+        onClick={() => (isOpen ? handleClickClose() : handleClickOpen())}
+      >
         <SettingsIcon fontSize="large" className={isSpinning} />
       </div>
     </div>

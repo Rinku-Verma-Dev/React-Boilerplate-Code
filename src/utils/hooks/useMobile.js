@@ -14,8 +14,7 @@ function useIsMobile() {
           /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
         )
       );
-      const isMobileScreenWidth = window.innerWidth <= 768;
-      setDeviceType(isMobileUserAgent || isMobileScreenWidth ? true : false);
+      setDeviceType(isMobileUserAgent);
     }
 
     handleResize(); // Call once initially to set device type

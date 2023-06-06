@@ -39,6 +39,14 @@ const Routing = () => {
         }
       />
       <Route
+        path="/input-components"
+        element={
+          <PrivateRoute auth={auth}>
+            <Redux />
+          </PrivateRoute>
+        }
+      />
+      <Route
         path="/login"
         element={
           <RestrictedRoute auth={auth}>

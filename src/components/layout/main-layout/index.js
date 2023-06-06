@@ -10,9 +10,10 @@ import Toolbar from "../../common/toolsbar/Toolbar";
 import NavBar from "../../common/navbar/NavBar";
 import useIsMobile from "../../../utils/hooks/useMobile";
 
-function MainLayout({ children }) {
+function MainLayout({ children, title = "Title" }) {
   const navigate = useNavigate();
   const isMobile = useIsMobile();
+
   const handleAbout = () => {
     navigate("/about");
   };
@@ -41,14 +42,25 @@ function MainLayout({ children }) {
     },
   ];
   return (
-    <div className="main-layout-wrapper">
-      {isMobile ? <Toolbar data={data} /> : <NavBar data={data} />}
-      <div className="layout-wrapper">
-        {/* <div className="header-wrapped">
+    <div
+      className={
+        isMobile ? "main-layout-wrapper-mobile" : "main-layout-wrapper"
+      }
+    >
+      {isMobile ? (
+        <div className="col-1-mobile">
           <Toolbar data={data} />
-        </div> */}
-        <div>{children}</div>
-      </div>
+          <div className="child-wrapper">{children}</div>
+        </div>
+      ) : (
+        <>
+          <NavBar data={data} />
+          <div className="col-1">
+            <div className="title">{title}</div>
+            <div className="child-wrapper">{children}</div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
